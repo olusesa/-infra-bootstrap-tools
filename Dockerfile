@@ -4,7 +4,7 @@ ARG TERRAFORM_VERSION="1.1.6"
 ARG ANSIBLE_VERSION="2.10.7"
 ARG PACKER_VERSION="1.5.4"
 
-LABEL maintainer="xNok <nokwebspace@gmail.com>"
+LABEL maintainer="olusesa <wakkywazzy@gmail.com>"
 LABEL terraform_version=${TERRAFORM_VERSION}
 LABEL ansible_version=${ANSIBLE_VERSION}
 LABEL aws_cli_version=${AWSCLI_VERSION}

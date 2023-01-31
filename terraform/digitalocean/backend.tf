@@ -1,10 +1,10 @@
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
-    organization = "nokwebspace"
+    organization = "wyzlab"
 
     workspaces {
-      name = "infra-bootstrap-tools-digitalocean"
+      name = "wyzlab-infra-bootstrap-tools"
     }
   }
 }

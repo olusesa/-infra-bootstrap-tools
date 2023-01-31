@@ -5,10 +5,10 @@ variable "worker_count" {
 
 variable "repo_name" {
   type = string
-  default = "xNok/infra-bootstrap-tools"
+  default = "olusesa/infra-bootstrap-tools"
 }
 
 variable "deployement_approver" {
   type = string
-  default = "xNok"
+  default = "olusesa"
 }
