@@ -1,0 +1,10 @@
+version: "3.7"
+
+
+services:
+  docker-registry:
+    deploy:
+      labels:
+        caddy: ${REGISTRY_DOMAIN}
+        caddy.basicauth.admin: ${REGISTRY_PASSWORD}
+        caddy.reverse_proxy: "{{upstreams 5000}}"
