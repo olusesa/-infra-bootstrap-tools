@@ -27,7 +27,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        chdir: terraform/digitalocean
+        dir: terraform/digitalocean
         run: terraform init
       
       - name: Terraform Validate
