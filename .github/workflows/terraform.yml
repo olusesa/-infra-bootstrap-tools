@@ -21,9 +21,9 @@ jobs:
           terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.SSH_KEY }}
 
-      # - name: Terraform Format
+      - name: Terraform Format
       #   id: fmt
-      #   run: terraform fmt -check terraform/digitalocean
+         run: terraform fmt -check
 
       - name: Terraform Init
         id: init
@@ -32,12 +32,12 @@ jobs:
       
       - name: Terraform Validate
         id: validate
-        run: terraform validate -no-color -d terraform/digitalocean
+        run: terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -input=false -d terraform/digitalocean
+        run: terraform plan -no-color -input=false
         continue-on-error: true
 
       - uses: actions/github-script@v6
@@ -69,7 +69,7 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false terraform/digitalocean
+        run: terraform apply -auto-approve -input=false
 
       # - name: Terraform destroy
       #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
