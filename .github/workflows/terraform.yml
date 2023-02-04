@@ -29,7 +29,7 @@ jobs:
       - name: Terraform Init
         id: init
         working-directory: ./terraform/digitalocean
-        run: terraform init
+        run: terraform init -reconfigure
       
       - name: Terraform Validate
         id: validate
