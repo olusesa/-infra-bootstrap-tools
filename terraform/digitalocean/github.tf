@@ -6,7 +6,8 @@
  */
 
 data "github_repository" "repo" {
-  full_name = var.repo_name
+  full_name = var.repo_name 
+  node_id = var.repo_name.id
 }
 
 data "github_user" "deployement_approver" {
@@ -18,7 +19,7 @@ resource "github_repository_environment" "digitalocean_environment" {
   environment      = "digitalocean"
   reviewers {
     users = [data.github_user.deployement_approver.id]
-    teams = [var.deployement_approver] #an entire team can be approver
+    teams = [var.worker_count] #an entire team can be approver
   }
 
   deployment_branch_policy {
@@ -33,7 +34,6 @@ resource "github_repository_environment" "digitalocean_environment" {
  */
 resource "github_branch_protection" "main" {
   repository_id     = data.github_repository.repo.node_id
-
   pattern          = "main"
   enforce_admins   = true
 
