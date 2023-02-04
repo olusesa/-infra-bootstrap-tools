@@ -23,18 +23,22 @@ jobs:
 
       - name: Terraform Format
         id: fmt
+        working-directory: ./terraform/digitalocean
         run: terraform fmt -check
 
       - name: Terraform Init
         id: init
-        run: terraform init -chdir terraform/digitalocean
+        working-directory: ./terraform/digitalocean
+        run: terraform init -chdir 
       
       - name: Terraform Validate
         id: validate
+        working-directory: ./terraform/digitalocean
         run: terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
+        working-directory: ./terraform/digitalocean
         if: github.event_name == 'pull_request'
         run: terraform plan -no-color -input=false
         continue-on-error: true
@@ -67,8 +71,9 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
+        working-directory: ./terraform/digitalocean
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false terraform/digitalocean
+        run: terraform apply -auto-approve -input=false
 
       # - name: Terraform destroy
       #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
