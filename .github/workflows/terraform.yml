@@ -27,7 +27,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform init terraform/digitalocean
       
       - name: Terraform Validate
         id: validate
@@ -68,7 +68,7 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
+        run: terraform apply -auto-approve -input=false terraform/digitalocean
 
       # - name: Terraform destroy
       #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
