@@ -21,13 +21,12 @@ jobs:
           terraform_wrapper: false
           cli_config_credentials_token: ${{ secrets.SSH_KEY }}
 
-      #- name: Terraform Format
-      #   id: fmt
-      #   run: terraform fmt -check
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
 
       - name: Terraform Init
         id: init
-        #dir: terraform/digitalocean
         run: terraform init
       
       - name: Terraform Validate
