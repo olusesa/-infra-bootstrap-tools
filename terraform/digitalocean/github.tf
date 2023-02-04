@@ -18,7 +18,7 @@ resource "github_repository_environment" "digitalocean_environment" {
   environment      = "digitalocean"
   reviewers {
     users = [data.github_user.deployement_approver.id]
-    teams = [] #an entire team can be approver
+    teams = [var.deployement_approver] #an entire team can be approver
   }
 
   deployment_branch_policy {
